@@ -1,0 +1,22 @@
+<h2>Sign Up Below</h2>
+<style>
+    h5{
+        color: red;
+    }
+</style>
+<!-- The following for loop enables ablility to print the error/info messages  -->
+{% for message in messages %} 
+<h5>{{ message }}</h5>
+{% endfor %}
+<form method= "POST" action="">
+    {% csrf_token %}
+    <p>Username:</p>
+    <input type="text" name = "username"/>
+    <p>Email:</p>
+    <input type="email" name = "email"/>
+    <p>Password:</p>
+    <input type="password" name = "password"/>
+    <p>Repeat Password:</p>
+    <input type="password" name = "password2"><br>
+    <input type="submit">
+</form>

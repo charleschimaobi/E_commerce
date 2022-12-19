@@ -6,7 +6,8 @@ from .models import Product
 
 
 def greet_user(request):
-    return HttpResponse('<h1> Hello, Welcome to my e-commerce Platform </h1>' )
+    return HttpResponse('<h1> Hello, Welcome to my e-commerce Platform 👋👋😊</h1>' )
+    
 
 products = Product.objects.all()
 def index(request):
@@ -56,4 +57,12 @@ def logout(request):
     auth.logout(request)
     return redirect('http://127.0.0.1:8000/products/')
     
+def search(request):
+    if request.method =="GET":
+        search = request.GET.get("search")
+        product = Product.objects.all().filter(name=search)
+        return render(request, 'search.html', {'product': product})
 
+def productSearch(request, pk):
+    product = Product.objects.get(name=pk)
+    return render(request, 'productSearch.html', {'productSearch': product})
